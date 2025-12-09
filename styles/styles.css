@@ -1,0 +1,375 @@
+/* -------------------
+   1. Reset & Base
+------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  display: block;
+  height: 100%;
+  margin: 0;
+  font-family: "Roboto Slab", serif;  
+  font-size: clamp(1rem, 4vw, 1.2rem);
+  font-weight: 200;
+  line-height: 1.5em;
+  color: rgb(0, 0, 0);
+  position: relative;
+  /* Base background - neon signs are generated dynamically by JavaScript */
+  background: linear-gradient(180deg, #060410 0%, #0d0815 35%, #10101a 65%, #080612 100%);
+  overflow-x: hidden;
+}
+
+/* -------------------
+   2. Form Layout
+------------------- */
+.form-container {
+    display: flex;
+    height: 100%;
+    background-color: rgba(10, 5, 20, 0.85);
+    border-radius: 1rem;
+    max-width: 600px; 
+    text-shadow: 0 2px 10px rgba(0, 255, 255, 0.5);
+    box-shadow: 
+      0 0 5px 2px #ff00ff,
+      0 0 15px 4px rgba(255, 0, 255, 1),
+      0 0 30px 6px rgba(255, 0, 255, 0.8),
+      0 0 50px 8px rgba(0, 255, 255, 0.6),
+      0 0 80px 10px rgba(255, 0, 255, 0.4),
+      inset 0 0 80px rgba(255, 0, 255, 0.15);
+    border: 3px solid #00ffff;
+    margin: 2rem auto 6rem;
+    padding: 2rem;   
+    align-items: flex-start;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem; 
+  width: 100%;
+}
+
+/* -------------------
+   3. Fieldsets & Inputs
+------------------- */
+fieldset {
+  border: none;
+  border-top: 2px solid rgba(255, 0, 255, 0.5);    
+  margin-top: 1rem;
+  padding: 1rem 0 0.5rem 0;
+}
+
+legend {
+  padding-inline: 0.5rem;
+  font-weight: 600;
+  font-size: clamp(0.9em, 2.5vw, 1.1em);
+  color: #00ffff;
+  background-color: transparent;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+.legend-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8em;
+  height: 1.8em;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, 
+    #ff00ff 0%, 
+    #00ffff 100%);
+  color: #000;
+  font-weight: 900;
+  font-size: 0.9em;
+  margin-right: 0.5rem;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.8);
+}
+
+/* Common input styling */
+input,
+select,
+textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.6rem;
+    margin: 0 0 0.3rem 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid #ff00ff;
+    border-radius: 0.25rem;
+    font-family: inherit;
+    font-size: 1rem;
+    color: #00ffff;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px rgba(255, 0, 255, 0.5), inset 0 0 10px rgba(255, 0, 255, 0.1);
+}
+
+/* Focus states */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-color: #00ffff;
+    box-shadow: 
+      0 0 5px rgba(0, 255, 255, 1),
+      0 0 15px rgba(0, 255, 255, 0.8),
+      0 0 25px rgba(255, 0, 255, 0.6),
+      inset 0 0 15px rgba(0, 255, 255, 0.2);
+}
+
+/* Validation states - only show after user interaction */
+input:not(:placeholder-shown):invalid,
+select:invalid:not(:focus),
+textarea:not(:placeholder-shown):invalid {
+    border-color: #ff0080;
+    background-color: rgba(255, 0, 128, 0.15);
+    box-shadow: 
+      0 0 5px rgba(255, 0, 128, 1),
+      0 0 15px rgba(255, 0, 128, 0.8),
+      inset 0 0 15px rgba(255, 0, 128, 0.2);
+}
+
+input:not(:placeholder-shown):valid,
+select:valid:not(:focus):not([value=""]),
+textarea:not(:placeholder-shown):valid {
+    border-color: #00ff80;
+    background-color: rgba(0, 255, 128, 0.15);
+    box-shadow: 
+      0 0 5px rgba(0, 255, 128, 1),
+      0 0 15px rgba(0, 255, 128, 0.8),
+      inset 0 0 15px rgba(0, 255, 128, 0.2);
+}
+
+/* Enhanced validation for browsers that support user-invalid/user-valid */
+@supports selector(:user-invalid) {
+  input:user-invalid,
+  select:user-invalid,
+  textarea:user-invalid {
+    border-color: #ff0080;
+    background-color: rgba(255, 0, 128, 0.15);
+    box-shadow: 
+      0 0 5px rgba(255, 0, 128, 1),
+      0 0 15px rgba(255, 0, 128, 0.8),
+      inset 0 0 15px rgba(255, 0, 128, 0.2);
+  }
+  
+  input:user-valid,
+  select:user-valid,
+  textarea:user-valid {
+    border-color: #00ff80;
+    background-color: rgba(0, 255, 128, 0.15);
+    box-shadow: 
+      0 0 5px rgba(0, 255, 128, 1),
+      0 0 15px rgba(0, 255, 128, 0.8),
+      inset 0 0 15px rgba(0, 255, 128, 0.2);
+  }
+}
+
+/* Form element spacing */
+label {
+  display: block;
+  margin-top: 0.5rem;
+  margin-bottom: 0.2rem;
+  font-weight: 500;
+  color: #00ffff;
+}
+
+fieldset#account-info {
+  margin-bottom: 1rem;
+}
+
+fieldset#experience {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+fieldset#dev-skills {
+    display: grid;  
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Nested styles for checkbox/radio fieldsets */
+fieldset#experience,
+fieldset#dev-skills {
+  /* Labels */
+  & label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: left;
+  }
+
+  /* Checkboxes and radios */
+  & input[type="checkbox"],
+  & input[type="radio"] {
+    width: auto;
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  /* Headings and legends */
+  & h3,
+  & legend {
+    grid-column: 1 / -1;
+    text-align: left;
+    margin-bottom: 1rem;
+    padding: 0;
+    font-size: clamp(0.8em, 2.5vw, 1em);
+    font-weight: 500;
+  }
+}
+
+/* -------------------
+   4. Typography
+------------------- */
+h1 {
+  color: #ff00ff;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 900;
+  line-height: 1.2em;
+  letter-spacing: 0.05em;
+  text-shadow: 
+    0 0 10px rgba(255, 0, 255, 1),
+    0 0 20px rgba(255, 0, 255, 0.8),
+    0 0 30px rgba(0, 255, 255, 0.6);
+  text-decoration: underline;
+  text-decoration-color: #00ffff;
+  text-decoration-thickness: 0.15em;
+  text-underline-offset: 0.6rem;
+}
+
+h3 {
+  font-size: clamp(0.8em, 2.5vw, 1em);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  margin: 0 0 1rem 0;
+  padding: 0;
+  width: 100%;
+  color: #ff00ff;
+  text-shadow: 0 0 5px rgba(255, 0, 255, 0.8);
+}
+
+/* -------------------
+   5. Footer
+------------------- */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  backdrop-filter: blur(6px) saturate(140%);
+  z-index: 3;
+}
+
+footer .brand {
+  font-weight: 600;
+  color: #ff00ff;
+  text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+}
+
+footer .tag {
+  font-style: italic;
+  color: #00ffff;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+/* -------------------
+   6. Utilities
+------------------- */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Hidden details field - completely removed from layout when hidden */
+#details-label.visually-hidden,
+#details.visually-hidden {
+  display: none;
+}
+
+/* Help text for password requirements */
+.help-text {
+  font-size: 0.85em;
+  color: #00ffff;
+  margin: 0.5rem 0 1rem;
+  line-height: 1.4;
+}
+
+.help-text ul {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.help-text li {
+  margin: 0.25rem 0;
+}
+
+/* Form actions */
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+button[type="submit"],
+button[type="reset"] {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+button[type="submit"] {
+  background: linear-gradient(135deg, 
+    #ff00ff 0%, 
+    #00ffff 100%);
+  color: #000;
+  font-weight: 900;
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.8), 0 0 40px rgba(0, 255, 255, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(135deg, 
+    #00ffff 0%, 
+    #ff00ff 100%);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 1), 0 0 50px rgba(255, 0, 255, 0.6);
+}
+
+button[type="reset"] {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ff0080;
+  border: 2px solid rgba(255, 0, 128, 0.5);
+  font-weight: 700;
+}
+
+button[type="reset"]:hover {
+  background-color: rgba(255, 0, 128, 0.2);
+  color: #ff0080;
+  box-shadow: 0 0 15px rgba(255, 0, 128, 0.6);
+}
