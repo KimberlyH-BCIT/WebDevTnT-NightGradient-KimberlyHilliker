@@ -70,7 +70,7 @@ const NEON_COLORS = 15 vibrant rgba() values;
 - Custom fieldset styling with numbered legends
 - Interactive form elements with cyberpunk color scheme
 - Visual password requirements
-- Clean, modern typography (Roboto Slab)emplate per sign (minimal string concatenation)
+- Clean, modern typography (Roboto Slab)
 
 ## 📁 Project Structure
 
@@ -111,6 +111,18 @@ WebDevTnT-NightGradient-KimberlyHilliker/
 
 **Kimberly Hilliker**  
 WebDevTnT Student
+
+## 🤖 AI Tools Used
+
+This project was developed with assistance from **GitHub Copilot** and **Claude Sonnet 4.5**:
+
+- **Code Generation**: JavaScript animation logic, gradient calculations, and performance optimizations
+- **Refactoring**: Transferring static CSS gradients to dynamic JavaScript generation
+- **Architecture**: Animation system design with object pooling and pre-computed constants
+- **Documentation**: Technical explanations and code comments
+- **Problem Solving**: Debugging animation issues, optimization strategies, and git workflow
+
+The creative vision (80's cyberpunk aesthetic, tunnel-flying effect, rainy neon cityscape) and design decisions were human-driven, with AI assisting in implementation and technical optimization.
 
 ## 📄 License
 
