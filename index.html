@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Form Factor — KHA1</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./styles/styles.css" />
+</head>
+
+<body>
+  <main>
+    <div class="form-container">
+      <article id="signup-form" class="panel">        
+        <h1>Signup</h1>
+        <form class="form" method="post" action="#" novalidate>
+          
+          <!-- Account Info Section -->
+          <h2 class="visually-hidden">Account Info</h2>
+          <fieldset id="account-info">         
+            <legend><span class="legend-number">1</span> Account Information</legend>
+            
+            <label for="username" class="visually-hidden">Full Name</label>
+            <input 
+              id="username" 
+              name="username" 
+              type="text" 
+              placeholder="Full name..." 
+              autocomplete="name"
+              required 
+              aria-required="true">
+            
+            <label for="email" class="visually-hidden">Email Address</label>
+            <input 
+              id="email" 
+              name="email" 
+              type="email" 
+              placeholder="Email Address..." 
+              autocomplete="email"
+              required 
+              aria-required="true">
+            
+            <label for="password" class="visually-hidden">Password</label>
+            <input 
+              id="password" 
+              name="password" 
+              type="password" 
+              placeholder="Password..." 
+              autocomplete="new-password"
+              minlength="12"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{12,}$"
+              title="Password must be at least 12 characters and include uppercase, lowercase, number, and symbol"
+              required 
+              aria-required="true"
+              aria-describedby="password-requirements">
+            
+            <div id="password-requirements" class="help-text">
+              <p>Password requirements:</p>
+              <ul>
+                <li>Minimum 12 characters</li>
+                <li>Must include uppercase and lowercase letters</li>
+                <li>Must include at least one number</li>
+                <li>Must include at least one symbol</li>
+              </ul>
+            </div>
+          </fieldset>
+
+          <!-- Dev Skills Section -->
+          <h2 class="visually-hidden">Dev Skills</h2>
+          <fieldset id="dev-skills">
+            <legend><span class="legend-number">2</span> Development Skills</legend>
+            
+            <h3>Core Languages</h3>
+            <label><input type="checkbox" name="languages[]" value="html"> HTML</label>
+            <label><input type="checkbox" name="languages[]" value="css"> CSS</label>
+            <label><input type="checkbox" name="languages[]" value="js"> JavaScript</label>
+            <label><input type="checkbox" name="languages[]" value="php"> PHP</label>
+            <label><input type="checkbox" name="languages[]" value="csharp"> C#</label>
+            <label><input type="checkbox" name="languages[]" value="kotlin"> Kotlin</label>
+            <br/>
+            <h3>Libraries/Frameworks</h3>
+            <label><input type="checkbox" name="frameworks[]" value="react"> React</label>
+            <label><input type="checkbox" name="frameworks[]" value="angular"> Angular</label>
+            <label><input type="checkbox" name="frameworks[]" value="vue"> Vue.js</label>
+            <br/>            
+            <h3>Dev Ops</h3>
+            <label><input type="checkbox" name="devops[]" value="git"> Git</label>
+            <label><input type="checkbox" name="devops[]" value="gulp"> Gulp</label>
+            <label><input type="checkbox" name="devops[]" value="docker"> Docker</label>
+          </fieldset>
+
+          <!-- Experience Section -->
+          <h2 class="visually-hidden">Experience</h2>
+          <fieldset id="experience">
+            <legend><span class="legend-number">3</span> Experience Level</legend>
+            <label><input type="radio" name="level" value="beginner" required> Beginner</label>
+            <label><input type="radio" name="level" value="intermediate"> Intermediate</label>
+            <label><input type="radio" name="level" value="advanced"> Advanced</label>
+          </fieldset>
+
+          <!-- Other Section -->
+          <h2 class="visually-hidden">Other</h2>
+          <fieldset id="other">
+            <legend><span class="legend-number">4</span> Additional Information</legend>
+            
+            <label for="hear">How did you hear about us?</label>
+            <select id="hear" name="hear" required aria-required="true">
+              <option value="">Please Select…</option>
+              <optgroup label="Personal">
+                <option value="friend">Friend</option>
+                <option value="family">Family</option>
+              </optgroup>
+              <optgroup label="Online">
+                <option value="social">Social Media</option>
+                <option value="search">Search Engine</option>
+                <option value="blog">Blog Post</option>
+              </optgroup>
+              <optgroup label="Other">
+                <option value="magic">Magic!</option>
+                <option value="other">Other...</option>
+              </optgroup>
+            </select>
+                        
+            <label for="details" id="details-label" class="visually-hidden">Please provide details</label>
+            <textarea 
+              id="details" 
+              name="details" 
+              rows="4"
+              class="visually-hidden"
+              placeholder="Do tell!"></textarea>
+            
+            <label for="allComments">Comments (Optional)</label>
+            <textarea 
+              id="allComments" 
+              name="comments" 
+              rows="6"
+              placeholder="Tell us anything else you'd like us to know..."></textarea>
+          </fieldset>
+
+          <!-- Form Actions -->
+          <div class="form-actions">
+            <button type="submit" aria-label="Submit signup form">Submit</button>
+            <button type="reset">Clear Form</button>
+          </div>
+        </form>        
+      </article>
+    </div>
+  </main>
+  
+  <footer>
+    <span class="brand">Kimberly Hilliker · WebDevTnT</span>
+    <span class="tag">© 2025 · Assignment 01</span>
+  </footer>
+
+  <script src="./scripts/form-handler.js"></script>
+</body>
+
+</html>
